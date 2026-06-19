@@ -1,0 +1,159 @@
+id: centralized_ai_backlash_structure_fingerprint
+title: Centralized AI Backlash Structure Fingerprint
+created_at: "2026-06-20T07:00:00+09:00"
+
+subject:
+  name: Centralized AI Backlash Pattern
+  type: case_study
+  description: >
+    A structural pattern in which centralized AI scaling creates infrastructure
+    concentration, memory and compute pressure, energy burden, local resistance,
+    and governance backlash.
+  published_at: "2026-06-20T06:00:00+09:00"
+
+fingerprint_scope: event_pattern
+
+fingerprint_summary: >
+  This fingerprint captures the structural sequence and conceptual pattern used to
+  compare centralized AI infrastructure backlash cases. It is not a proof of influence,
+  imitation, or origin. It is a comparison aid for synchronization audit records.
+
+components:
+  vocabulary_signature:
+    - term: centralized_ai
+      weight: domain_specific
+      note: >
+        Refers to AI systems or strategies based on concentrated compute,
+        infrastructure, and control.
+    - term: infrastructure_pressure
+      weight: domain_specific
+      note: >
+        Captures pressure on memory, compute, energy, land, water, and grid systems.
+    - term: backlash
+      weight: common
+      note: >
+        A broad term for social, economic, political, or governance resistance.
+    - term: trace
+      weight: domain_specific
+      note: >
+        Refers to origin, evidence, or transformation records used in audit contexts.
+
+  structural_sequence:
+    - order: 1
+      name: ai_scaling
+      description: >
+        AI systems scale through larger models, higher demand, broader deployment,
+        or increased dependency.
+    - order: 2
+      name: infrastructure_concentration
+      description: >
+        Scaling concentrates demand into data centers, memory supply chains,
+        compute clusters, energy systems, and physical sites.
+    - order: 3
+      name: resource_pressure
+      description: >
+        Concentration creates pressure on energy, memory, cooling, land, water,
+        supply chains, and local infrastructure.
+    - order: 4
+      name: social_or_economic_resistance
+      description: >
+        Communities, markets, governments, or users respond to the burden or risk.
+    - order: 5
+      name: governance_or_design_reassessment
+      description: >
+        The pressure creates demand for decentralization, audit, policy, edge compute,
+        traceability, or alternative architectures.
+
+  metaphor_signature:
+    - metaphor: radar_calibration
+      uniqueness: moderate
+      role: >
+        Describes the need to calibrate audit methods before reacting to similarity.
+    - metaphor: audit_ruler
+      uniqueness: moderate
+      role: >
+        Describes v0.1 as a measurement standard rather than a verdict machine.
+    - metaphor: structural_fingerprint
+      uniqueness: distinctive
+      role: >
+        Describes the comparison of conceptual order, metaphor, dependency, and
+        transformation patterns.
+
+  dependency_pattern:
+    - from: ai_scaling
+      to: infrastructure_concentration
+      relation: >
+        Scaling increases dependence on concentrated compute and memory infrastructure.
+    - from: infrastructure_concentration
+      to: resource_pressure
+      relation: >
+        Concentration increases physical, economic, and supply-chain pressure.
+    - from: resource_pressure
+      to: social_or_economic_resistance
+      relation: >
+        Visible burdens create resistance or backlash.
+    - from: social_or_economic_resistance
+      to: governance_or_design_reassessment
+      relation: >
+        Resistance creates demand for new governance, audit, or decentralization models.
+
+  transformation_pattern:
+    - step: 1
+      action: observe_similarity
+      description: >
+        A public event, document, output, or system appears similar to an existing
+        structural model.
+    - step: 2
+      action: separate_similarity_from_influence
+      description: >
+        The protocol separates observed resemblance from causal claims.
+    - step: 3
+      action: classify_with_audit_record
+      description: >
+        The similarity is classified using the A-E Synchronization Audit model.
+    - step: 4
+      action: connect_trace_refs
+      description: >
+        Relevant audit records, case studies, commits, articles, or trace receipts
+        are linked without treating them as automatic proof.
+
+trace_layer_refs:
+  - type: sync_audit_record
+    ref: examples/sync-audit-record.centralized-ai-backlash-memory-inflation.example.yaml
+    description: >
+      Primary sync audit record for the memory inflation and centralized AI backlash case.
+  - type: case_study
+    ref: docs/case-studies/centralized-ai-backlash-memory-inflation.md
+    description: >
+      Human-readable case study using the v0.2 Case Study Layer.
+  - type: case_study
+    ref: docs/case-studies/data-center-local-resistance.md
+    description: >
+      Related case study involving local resistance to data center expansion.
+
+comparison_use:
+  intended_use:
+    - Compare structural order between source origin and external target.
+    - Identify whether unusual metaphors or dependency patterns overlap.
+    - Support conservative classification in synchronization audit records.
+    - Link case studies to trace evidence without overclaiming.
+  not_intended_use:
+    - Prove copying by itself.
+    - Replace human review.
+    - Assign legal responsibility.
+    - Treat vocabulary overlap as sufficient evidence.
+    - Collapse structural convergence into direct influence.
+
+proof_status:
+  status: not_proof
+  statement: >
+    This structure fingerprint is not proof of influence, imitation, or causality.
+    It is a comparison aid that must be interpreted through a synchronization audit
+    record and, when necessary, formal review.
+
+limitations:
+  - Similar structures can emerge independently under shared constraints.
+  - Public accessibility does not prove that the source was used.
+  - Vocabulary overlap is weaker than structural order and unique metaphor overlap.
+  - AI-side reconstruction may create similarity without explicit citation.
+  - Human review is required before assigning high-confidence influence claims.
