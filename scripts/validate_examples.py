@@ -7,14 +7,8 @@ from jsonschema import Draft202012Validator
 
 
 ROOT = Path(__file__).resolve().parents[1]
-
-VALIDATION_TARGETS = [
-    {
-        "name": "Synchronization Audit Record",
-        "schema": ROOT / "schemas" / "sync-audit-record.schema.json",
-        "example": ROOT / "examples" / "sync-audit-record.example.yaml",
-    }
-]
+SCHEMA_PATH = ROOT / "schemas" / "sync-audit-record.schema.json"
+EXAMPLES_DIR = ROOT / "examples"
 
 
 def load_json(path: Path):
@@ -27,38 +21,43 @@ def load_yaml(path: Path):
         return yaml.safe_load(f)
 
 
-def validate_target(target):
-    name = target["name"]
-    schema_path = target["schema"]
-    example_path = target["example"]
+def find_example_files():
+    return sorted(EXAMPLES_DIR.glob("sync-audit-record*.yaml"))
 
-    print(f"[validate] {name}")
-    print(f"  schema : {schema_path.relative_to(ROOT)}")
+
+def validate_example(schema, example_path: Path):
+    print("[validate] Synchronization Audit Record")
+    print(f"  schema : {SCHEMA_PATH.relative_to(ROOT)}")
     print(f"  example: {example_path.relative_to(ROOT)}")
 
-    schema = load_json(schema_path)
     example = load_yaml(example_path)
-
     validator = Draft202012Validator(schema)
     errors = sorted(validator.iter_errors(example), key=lambda e: e.path)
 
     if errors:
-        print(f"[error] {name} validation failed")
+        print(f"[error] {example_path.name} validation failed")
         for error in errors:
             path = ".".join(str(part) for part in error.path) or "<root>"
             print(f"  - path: {path}")
             print(f"    message: {error.message}")
         return False
 
-    print(f"[ok] {name} example is valid")
+    print(f"[ok] {example_path.name} is valid")
     return True
 
 
 def main():
+    schema = load_json(SCHEMA_PATH)
+    example_files = find_example_files()
+
+    if not example_files:
+        print("[error] No example files found")
+        sys.exit(1)
+
     all_ok = True
 
-    for target in VALIDATION_TARGETS:
-        if not validate_target(target):
+    for example_path in example_files:
+        if not validate_example(schema, example_path):
             all_ok = False
 
     if not all_ok:
