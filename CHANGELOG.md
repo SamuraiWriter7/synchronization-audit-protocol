@@ -1,5 +1,27 @@
 # Changelog
 
+## [v0.2.0-candidate] - 2026-06-20
+
+### Added
+
+- Added Case Study Layer.
+- Added `docs/case-study-method.md`.
+- Added case study directory:
+  - `docs/case-studies/centralized-ai-backlash-memory-inflation.md`
+  - `docs/case-studies/data-center-local-resistance.md`
+  - `docs/case-studies/ai-search-trace-origin-opacity.md`
+- Added multiple example audit records:
+  - `sync-audit-record.centralized-ai-backlash-memory-inflation.example.yaml`
+  - `sync-audit-record.data-center-local-resistance.example.yaml`
+  - `sync-audit-record.ai-search-trace-origin-opacity.example.yaml`
+- Updated `scripts/validate_examples.py` to validate all matching sync audit record examples.
+
+### Notes
+
+v0.2 applies the v0.1 audit ruler to concrete cases.
+
+The goal is to demonstrate conservative classification discipline before adding structural fingerprint logic in v0.3.
+
 All notable changes to this project will be documented in this file.
 
 ## [v0.1.0-candidate] - 2026-06-20
