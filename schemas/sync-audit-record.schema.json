@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/synchronization-audit-protocol/schemas/sync-audit-record.schema.json",
+  "title": "Synchronization Audit Record",
+  "description": "A minimal audit record for classifying observed similarities without assuming influence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "observer",
+    "observed_at",
+    "source_origin",
+    "external_target",
+    "similarity_summary",
+    "classification",
+    "evidence_matrix",
+    "confidence",
+    "ai_reconstruction_risk",
+    "conclusion",
+    "recommended_action"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable identifier for the audit record.",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the person or system recording the audit."
+        }
+      }
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_origin": {
+      "$ref": "#/$defs/entity_record"
+    },
+    "external_target": {
+      "$ref": "#/$defs/entity_record"
+    },
+    "similarity_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "shared_elements",
+        "non_shared_elements"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "shared_elements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "non_shared_elements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "label", "rationale"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D", "E"]
+        },
+        "label": {
+          "type": "string",
+          "enum": [
+            "accidental_sync",
+            "structural_convergence",
+            "indirect_influence",
+            "direct_reference_or_imitation",
+            "ai_reconstruction"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence_matrix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timestamp_order",
+        "vocabulary_overlap",
+        "structural_order_overlap",
+        "unique_metaphor_overlap",
+        "reference_path",
+        "public_accessibility",
+        "ai_context_dependency",
+        "independent_constraint_pressure"
+      ],
+      "properties": {
+        "timestamp_order": {
+          "$ref": "#/$defs/evidence_item"
+        },
+        "vocabulary_overlap": {
+          "$ref": "#/$defs/evidence_item"
+        },
+        "structural_order_overlap": {
+          "$ref": "#/$defs/evidence_item"
+        },
+        "unique_metaphor_overlap": {
+          "$ref": "#/$defs/evidence_item"
+        },
+        "reference_path": {
+          "$ref": "#/$defs/evidence_item"
+        },
+        "public_accessibility": {
+          "$ref": "#/$defs/evidence_item"
+        },
+        "ai_context_dependency": {
+          "$ref": "#/$defs/evidence_item"
+        },
+        "independent_constraint_pressure": {
+          "$ref": "#/$defs/evidence_item"
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "score", "rationale"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rationale": {
+          "type": "string"
+        }
+      }
+    },
+    "ai_reconstruction_risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "rationale"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["none", "low", "medium", "high", "unknown"]
+        },
+        "rationale": {
+          "type": "string"
+        }
+      }
+    },
+    "conclusion": {
+      "type": "string",
+      "description": "Non-definitive conclusion based on the available evidence."
+    },
+    "recommended_action": {
+      "type": "string",
+      "enum": [
+        "no_action",
+        "monitor",
+        "collect_more_evidence",
+        "publish_case_study",
+        "request_attribution_review",
+        "escalate_to_formal_review"
+      ]
+    }
+  },
+  "$defs": {
+    "entity_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "description"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "idea",
+            "document",
+            "repository",
+            "protocol",
+            "system",
+            "public_event",
+            "ai_output",
+            "other"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "access_note": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rating", "summary"],
+      "properties": {
+        "rating": {
+          "type": "string",
+          "enum": ["absent", "weak", "moderate", "strong", "unknown"]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
