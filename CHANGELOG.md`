@@ -1,0 +1,38 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [v0.1.0-candidate] - 2026-06-20
+
+### Added
+
+- Added initial Synchronization Audit Protocol repository structure.
+- Added `sync-audit-record.schema.json`.
+- Added fixed A–E classification model:
+  - `A = accidental_sync`
+  - `B = structural_convergence`
+  - `C = indirect_influence`
+  - `D = direct_reference_or_imitation`
+  - `E = ai_reconstruction`
+- Added evidence matrix fields:
+  - `timestamp_order`
+  - `vocabulary_overlap`
+  - `structural_order_overlap`
+  - `unique_metaphor_overlap`
+  - `reference_path`
+  - `public_accessibility`
+  - `ai_context_dependency`
+  - `independent_constraint_pressure`
+- Added first example:
+  - `centralized_ai_backlash_memory_inflation`
+- Added Python validation script.
+- Added GitHub Actions workflow for example validation.
+- Added protocol documentation.
+
+### Notes
+
+v0.1 places the audit ruler before case-study expansion.
+
+The purpose of this version is not to prove influence, imitation, or causality.
+
+The purpose is to classify observed similarities with a conservative evidence structure.
