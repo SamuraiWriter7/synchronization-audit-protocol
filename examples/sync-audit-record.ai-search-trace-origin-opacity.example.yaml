@@ -1,0 +1,132 @@
+id: ai_search_trace_origin_opacity
+title: AI Search Trace and Origin Opacity
+observer:
+  name: SamuraiWriter7
+  role: protocol_designer
+observed_at: "2026-06-20T06:10:00+09:00"
+
+source_origin:
+  name: AI Search Trace Receipt model
+  type: protocol
+  description: >
+    A protocol model for recording how AI search or generation systems reference,
+    transform, summarize, and route source material while preserving origin evidence.
+  access_note: Publicly discussed as part of trace receipt and origin transparency work.
+
+external_target:
+  name: AI-mediated output with trace-like structure but weak origin path
+  type: ai_output
+  description: >
+    An AI-generated or AI-mediated interpretation that appears to reconstruct a
+    trace-based source-to-output structure without explicit citation or origin path.
+  access_note: Treated as an AI-side reconstruction risk pattern.
+
+similarity_summary:
+  summary: >
+    The external target appears structurally similar to trace receipt concepts because
+    it describes source material, AI processing, transformed output, and weakened
+    origin visibility. The likely concern is AI-side reconstruction rather than
+    confirmed direct imitation.
+  shared_elements:
+    - Source material is transformed through an AI process.
+    - The output weakens or obscures origin visibility.
+    - Trace records are needed to preserve accountability.
+    - Attribution and contribution paths become important.
+  non_shared_elements:
+    - The external target may be a generated synthesis rather than a formal protocol.
+    - No explicit citation or direct reference path is confirmed.
+    - The mechanism may involve AI memory, retrieval, or prompt dependency.
+
+classification:
+  code: E
+  label: ai_reconstruction
+  rationale: >
+    The observed similarity is best treated as an AI-side reconstruction risk because
+    the structure may have been reassembled through prompt context, retrieval, memory,
+    or latent synthesis without preserving origin evidence.
+
+evidence_matrix:
+  timestamp_order:
+    rating: moderate
+    summary: >
+      The source origin may predate the AI-mediated output, but timestamp order does
+      not prove direct use.
+    evidence_refs:
+      - "source_protocol_timestamps"
+      - "ai_output_timestamp"
+
+  vocabulary_overlap:
+    rating: moderate
+    summary: >
+      Terms such as trace, source, origin, attribution, transformation, and contribution
+      may overlap.
+    evidence_refs:
+      - "trace_vocabulary_overlap"
+
+  structural_order_overlap:
+    rating: strong
+    summary: >
+      Both structures follow a similar sequence from source material to AI processing,
+      transformed output, weakened origin path, and trace requirement.
+    evidence_refs:
+      - "source_to_ai_to_output_to_trace_sequence"
+
+  unique_metaphor_overlap:
+    rating: moderate
+    summary: >
+      If distinctive terms such as receipt, hook, graph, or origin trail appear in
+      combination, the similarity becomes more significant.
+    evidence_refs:
+      - "possible_distinctive_trace_metaphors"
+
+  reference_path:
+    rating: unknown
+    summary: >
+      No explicit citation is confirmed, but AI context or retrieval may provide an
+      indirect path.
+    evidence_refs:
+      - "unknown_prompt_or_retrieval_path"
+
+  public_accessibility:
+    rating: moderate
+    summary: >
+      The source origin may have been publicly accessible.
+    evidence_refs:
+      - "public_repository_or_article_access"
+
+  ai_context_dependency:
+    rating: strong
+    summary: >
+      AI context, memory, retrieval, or prompt dependency could plausibly reconstruct
+      the similarity without explicit citation.
+    evidence_refs:
+      - "possible_ai_context_dependency"
+
+  independent_constraint_pressure:
+    rating: moderate
+    summary: >
+      AI-generated summaries naturally create origin opacity, so some similarity may
+      arise independently from the structure of AI mediation itself.
+    evidence_refs:
+      - "general_ai_origin_opacity"
+
+confidence:
+  level: medium
+  score: 0.68
+  rationale: >
+    AI reconstruction is plausible, but additional prompt, retrieval, or context
+    evidence would be required to strengthen the classification.
+
+ai_reconstruction_risk:
+  level: high
+  rationale: >
+    The case directly involves AI-mediated structure generation with weakened origin
+    visibility.
+
+conclusion: >
+  Direct influence is not proven. AI-side reconstruction is plausible. This case
+  should be treated as an origin-opacity risk rather than a direct imitation claim.
+  Further evidence would require prompt history, retrieval logs, citations, or
+  documented model context.
+
+recommended_action: collect_more_evidence
