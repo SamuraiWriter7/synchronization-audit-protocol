@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/synchronization-audit-protocol/schemas/structure-fingerprint.schema.json",
+  "title": "Structure Fingerprint",
+  "description": "A non-verdict structural fingerprint record for comparing conceptual, document, protocol, system, public-event, or AI-output similarities.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "created_at",
+    "subject",
+    "fingerprint_scope",
+    "fingerprint_summary",
+    "components",
+    "trace_layer_refs",
+    "comparison_use",
+    "proof_status",
+    "limitations"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable identifier for the structure fingerprint.",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "description"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "idea",
+            "document",
+            "repository",
+            "protocol",
+            "system",
+            "public_event",
+            "ai_output",
+            "case_study",
+            "other"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "fingerprint_scope": {
+      "type": "string",
+      "enum": [
+        "conceptual_structure",
+        "document_structure",
+        "protocol_structure",
+        "system_architecture",
+        "event_pattern",
+        "ai_output_structure",
+        "mixed"
+      ]
+    },
+    "fingerprint_summary": {
+      "type": "string",
+      "description": "Human-readable summary of the structural fingerprint."
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vocabulary_signature",
+        "structural_sequence",
+        "metaphor_signature",
+        "dependency_pattern",
+        "transformation_pattern"
+      ],
+      "properties": {
+        "vocabulary_signature": {
+          "type": "array",
+          "description": "Important terms or phrase patterns that characterize the structure.",
+          "items": {
+            "$ref": "#/$defs/vocabulary_item"
+          }
+        },
+        "structural_sequence": {
+          "type": "array",
+          "description": "Ordered conceptual, procedural, or architectural sequence.",
+          "items": {
+            "$ref": "#/$defs/sequence_item"
+          }
+        },
+        "metaphor_signature": {
+          "type": "array",
+          "description": "Distinctive metaphors, symbolic frames, or unusual conceptual images.",
+          "items": {
+            "$ref": "#/$defs/metaphor_item"
+          }
+        },
+        "dependency_pattern": {
+          "type": "array",
+          "description": "Relations between structural components.",
+          "items": {
+            "$ref": "#/$defs/dependency_item"
+          }
+        },
+        "transformation_pattern": {
+          "type": "array",
+          "description": "How the structure transforms inputs, ideas, evidence, sources, or actions.",
+          "items": {
+            "$ref": "#/$defs/transformation_item"
+          }
+        }
+      }
+    },
+    "trace_layer_refs": {
+      "type": "array",
+      "description": "Pointers to trace records, audit records, commits, articles, receipts, or external evidence. These are references, not automatic proof.",
+      "items": {
+        "$ref": "#/$defs/trace_ref"
+      }
+    },
+    "comparison_use": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intended_use", "not_intended_use"],
+      "properties": {
+        "intended_use": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_intended_use": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "proof_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "statement"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_proof",
+            "supporting_evidence",
+            "requires_audit_record",
+            "requires_formal_review"
+          ]
+        },
+        "statement": {
+          "type": "string"
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "description": "Known limits and cautions for interpreting this fingerprint.",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "vocabulary_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term", "weight", "note"],
+      "properties": {
+        "term": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "string",
+          "enum": ["common", "domain_specific", "distinctive", "coined", "unknown"]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "sequence_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "name", "description"],
+      "properties": {
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "metaphor_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metaphor", "uniqueness", "role"],
+      "properties": {
+        "metaphor": {
+          "type": "string"
+        },
+        "uniqueness": {
+          "type": "string",
+          "enum": ["common", "moderate", "distinctive", "unknown"]
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "dependency_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "relation"],
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "relation": {
+          "type": "string"
+        }
+      }
+    },
+    "transformation_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step", "action", "description"],
+      "properties": {
+        "step": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "action": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "trace_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "ref", "description"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "sync_audit_record",
+            "case_study",
+            "trace_receipt",
+            "source_contribution_graph",
+            "repository_commit",
+            "article",
+            "external_source",
+            "ai_output",
+            "other"
+          ]
+        },
+        "ref": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
