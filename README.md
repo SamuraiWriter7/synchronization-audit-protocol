@@ -399,3 +399,39 @@ v0.1 places the audit ruler before case-study expansion.
 The purpose of this version is not to prove influence, imitation, or causality.
 
 The purpose is to classify observed similarities with a conservative evidence structure.
+
+## v0.2 Case Study Layer
+
+v0.2 adds the Case Study Layer.
+
+v0.1 placed the audit ruler.
+
+v0.2 applies that ruler to multiple examples.
+
+The purpose is not to accuse, prove imitation, or claim influence. The purpose is to test the A–E classification model against concrete similarity patterns.
+
+### Added Case Studies
+
+```text
+docs/case-studies/
+├── centralized-ai-backlash-memory-inflation.md
+├── data-center-local-resistance.md
+└── ai-search-trace-origin-opacity.md
+Added Example Records
+examples/
+├── sync-audit-record.centralized-ai-backlash-memory-inflation.example.yaml
+├── sync-audit-record.data-center-local-resistance.example.yaml
+└── sync-audit-record.ai-search-trace-origin-opacity.example.yaml
+Case Study Discipline
+
+Each case study must preserve the distinction between:
+
+similarity
+convergence
+influence
+direct reference
+AI-side reconstruction
+
+No case study should begin with an accusation.
+
+Every case study should begin with an observed similarity and then classify it conservatively.
