@@ -1,0 +1,131 @@
+id: data_center_local_resistance
+title: Data Center Local Resistance
+observer:
+  name: SamuraiWriter7
+  role: protocol_designer
+observed_at: "2026-06-20T06:00:00+09:00"
+
+source_origin:
+  name: Kazene centralized AI infrastructure backlash model
+  type: idea
+  description: >
+    A model describing how centralized AI infrastructure creates local pressure
+    through energy demand, land use, water use, grid stress, and uneven distribution
+    of benefits and costs.
+  access_note: Publicly discussed as part of civilization OS design work.
+
+external_target:
+  name: Public pattern of local resistance to data center expansion
+  type: public_event
+  description: >
+    A public pattern in which communities, local governments, or civil groups resist
+    large-scale data center expansion due to concerns about energy, land, water,
+    noise, grid pressure, or governance.
+  access_note: Treated as a general public event pattern rather than a single actor.
+
+similarity_summary:
+  summary: >
+    Both the source origin and external target describe centralized compute expansion
+    producing physical infrastructure burden and local governance resistance.
+    However, no direct reference path is confirmed.
+  shared_elements:
+    - Centralized compute expansion creates local infrastructure pressure.
+    - Energy, land, water, and grid constraints become visible.
+    - Local resistance emerges as a governance response.
+    - Benefits and costs are unevenly distributed.
+  non_shared_elements:
+    - The external target arises from concrete local infrastructure disputes.
+    - The source origin is a conceptual model.
+    - No confirmed citation or direct access path has been identified.
+
+classification:
+  code: B
+  label: structural_convergence
+  rationale: >
+    The similarity is best explained by shared physical and governance constraints.
+    Direct influence is not proven.
+
+evidence_matrix:
+  timestamp_order:
+    rating: moderate
+    summary: >
+      The source origin may predate or overlap the external target, but timestamp
+      order alone does not prove influence.
+    evidence_refs:
+      - "source_publication_or_discussion_timestamps"
+      - "external_event_timeline"
+
+  vocabulary_overlap:
+    rating: weak
+    summary: >
+      Vocabulary overlap exists at a broad level, but the terms are common in
+      infrastructure and AI policy discussions.
+    evidence_refs:
+      - "shared_terms_data_center_energy_grid_resistance"
+
+  structural_order_overlap:
+    rating: moderate
+    summary: >
+      Both patterns move from compute expansion to physical burden to local resistance.
+    evidence_refs:
+      - "compute_to_burden_to_resistance_sequence"
+
+  unique_metaphor_overlap:
+    rating: absent
+    summary: >
+      No distinctive metaphor reuse has been identified.
+    evidence_refs:
+      - "no_unique_metaphor_match"
+
+  reference_path:
+    rating: absent
+    summary: >
+      No citation, backlink, quotation, or documented access path has been confirmed.
+    evidence_refs:
+      - "no_confirmed_reference_path"
+
+  public_accessibility:
+    rating: moderate
+    summary: >
+      The source origin may have been publicly accessible, but accessibility alone
+      does not establish influence.
+    evidence_refs:
+      - "public_posts_or_repositories"
+
+  ai_context_dependency:
+    rating: unknown
+    summary: >
+      There is not enough evidence to determine whether AI-side reconstruction
+      played a role.
+    evidence_refs:
+      - "unknown_ai_context"
+
+  independent_constraint_pressure:
+    rating: strong
+    summary: >
+      Data center resistance can be independently explained by physical resource
+      pressure, energy demand, land use, and local governance constraints.
+    evidence_refs:
+      - "energy_pressure"
+      - "land_and_water_use"
+      - "local_governance_constraints"
+
+confidence:
+  level: medium
+  score: 0.74
+  rationale: >
+    Structural convergence is the most conservative classification because
+    independent constraint pressure is strong and direct reference evidence is absent.
+
+ai_reconstruction_risk:
+  level: unknown
+  rationale: >
+    AI-side reconstruction cannot be evaluated without prompt, retrieval, or model
+    context evidence.
+
+conclusion: >
+  No direct influence is proven. Structural convergence is likely. The similarity
+  is best explained by shared infrastructure and governance constraints unless
+  additional trace evidence appears.
+
+recommended_action: publish_case_study
