@@ -1,0 +1,150 @@
+id: ai_search_trace_origin_opacity_agent_hook
+title: AI Search Trace Origin Opacity Agent Hook
+created_at: "2026-06-20T09:00:00+09:00"
+
+agent:
+  name: synchronization_audit_assistant
+  agent_type: llm_assistant
+  role: >
+    Detect possible synchronization signals and prepare non-verdict audit candidates
+    for human review.
+
+hook_scope: ai_reconstruction_risk_detection
+
+input_context:
+  input_refs:
+    - type: ai_output
+      ref: observed_ai_mediated_trace_like_output
+      description: >
+        An AI-mediated output that appears to reproduce a trace-like structure
+        involving source material, transformation, origin opacity, and attribution need.
+    - type: sync_audit_record
+      ref: examples/sync-audit-record.ai-search-trace-origin-opacity.example.yaml
+      description: >
+        Existing synchronization audit record for AI search trace origin opacity.
+    - type: structure_fingerprint
+      ref: examples/structure-fingerprint.example.yaml
+      description: >
+        Existing structure fingerprint used for comparison.
+  observed_material_type: ai_output
+  processing_note: >
+    The agent observed a possible structural similarity signal in an AI-mediated
+    output. The signal is treated as a candidate detection, not as a verdict.
+
+detection_signal:
+  signal_type: mixed
+  signal_strength: moderate
+  summary: >
+    The observed output appears to share a source-to-AI-to-output-to-origin-opacity
+    sequence with trace receipt structures. The signal suggests possible AI-side
+    reconstruction risk, but direct reference is not proven.
+  detected_features:
+    - feature_type: structural_sequence
+      rating: strong
+      description: >
+        The output follows a similar sequence: source material, AI processing,
+        transformed output, weakened origin path, and need for trace accountability.
+    - feature_type: vocabulary
+      rating: moderate
+      description: >
+        Terms related to trace, source, origin, attribution, and transformation appear.
+    - feature_type: ai_context_dependency
+      rating: moderate
+      description: >
+        AI-side context, memory, retrieval, or prompt exposure could plausibly explain
+        the observed similarity.
+    - feature_type: trace_gap
+      rating: strong
+      description: >
+        The output lacks a clear origin path or citation trail.
+
+candidate_similarity:
+  candidate_classification: E_ai_reconstruction
+  confidence: medium
+  rationale: >
+    AI-side reconstruction is a plausible candidate classification because the
+    observed material is AI-mediated and shows origin-opacity features. However,
+    prompt history, retrieval logs, and model context records are not available.
+  not_a_verdict: true
+
+suggested_next_steps:
+  recommended_actions:
+    - create_sync_audit_record_candidate
+    - create_structure_fingerprint_candidate
+    - collect_more_evidence
+    - request_human_review
+  records_to_prepare:
+    - type: sync_audit_record
+      ref: candidate/sync-audit-record.ai-search-trace-origin-opacity.generated.yaml
+      description: >
+        Candidate synchronization audit record prepared for human review.
+    - type: structure_fingerprint
+      ref: candidate/structure-fingerprint.ai-search-trace-origin-opacity.generated.yaml
+      description: >
+        Candidate structure fingerprint prepared for comparison review.
+  required_missing_evidence:
+    - Prompt history
+    - Retrieval logs
+    - Model context record
+    - Citation or backlink evidence
+    - Human review notes
+
+safety_constraints:
+  agent_may:
+    - Detect possible similarity signals.
+    - Prepare candidate audit records.
+    - Prepare candidate structure fingerprints.
+    - List missing evidence.
+    - Recommend human review.
+    - Produce non-verdict summaries.
+  agent_must_not:
+    - Declare theft.
+    - Assign legal responsibility.
+    - Treat similarity as proof.
+    - Treat candidate classification as final.
+    - Escalate to accusation without human review.
+    - Treat AI reconstruction as intentional imitation.
+
+human_review_boundary:
+  required: true
+  trigger_conditions:
+    - ai_reconstruction_risk
+    - high_structural_overlap
+    - insufficient_trace_evidence
+    - human_review_requested
+  review_note: >
+    Human review is required before the candidate classification can be treated as
+    a stable synchronization audit classification.
+
+output_policy:
+  allowed_outputs:
+    - similarity_signal_report
+    - candidate_sync_audit_record
+    - candidate_structure_fingerprint
+    - missing_evidence_list
+    - non_verdict_summary
+  forbidden_outputs:
+    - Final A-E classification without human review.
+    - Public accusation.
+    - Legal conclusion.
+    - Claim of direct reference without reference-path evidence.
+    - Claim of intentional imitation based only on structural similarity.
+
+traceability:
+  version: v0.5.0-candidate
+  related_records:
+    - type: sync_audit_record
+      ref: examples/sync-audit-record.ai-search-trace-origin-opacity.example.yaml
+      description: >
+        Existing audit record used as a reference point.
+    - type: structure_fingerprint
+      ref: examples/structure-fingerprint.example.yaml
+      description: >
+        Existing structure fingerprint used as a comparison aid.
+    - type: defense_court_bridge
+      ref: examples/defense-court-bridge.example.yaml
+      description: >
+        Defense Court Bridge example defining human review boundaries.
+  change_note: >
+    Added AI Agent Hook for automatic synchronization signal detection without
+    automatic verdicts.
