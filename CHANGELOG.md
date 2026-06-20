@@ -1,5 +1,69 @@
 # Changelog
 
+## [v0.5.0-candidate] - 2026-06-20
+
+### Added
+
+- Added AI Agent Hook / Automatic Synchronization Detection.
+- Added `docs/ai-agent-hook.md`.
+- Added `schemas/ai-agent-hook.schema.json`.
+- Added `examples/ai-agent-hook.example.yaml`.
+- Updated `scripts/validate_examples.py` to validate AI Agent Hook examples.
+
+### AI Agent Hook
+
+The AI Agent Hook provides a controlled entry point for automatic synchronization signal detection.
+
+It allows agents to detect possible similarity signals and prepare candidate audit records, structure fingerprints, case studies, or defense bridge packets.
+
+It does not allow agents to produce final verdicts.
+
+### Detection Signals
+
+v0.5 supports detection of:
+
+- vocabulary overlap
+- structural sequence overlap
+- metaphor overlap
+- dependency pattern overlap
+- transformation pattern overlap
+- trace gaps
+- AI context dependency
+- mixed signals
+
+### Safety Boundary
+
+AI may detect and prepare.
+
+AI must not judge.
+
+AI must not:
+
+- declare theft
+- assign legal responsibility
+- treat similarity as proof
+- treat candidate classification as final
+- bypass human review
+- publish accusation-level claims automatically
+
+### First Complete Arc
+
+v0.5 completes the first protocol arc:
+
+```text
+v0.1 = Audit Ruler
+v0.2 = Case Study Layer
+v0.3 = Structure Fingerprint / Trace Layer
+v0.4 = Defense Court Protocol Integration
+v0.5 = AI Agent Hook / Automatic Synchronization Detection
+Principle
+
+AI detects.
+
+AI prepares.
+
+AI does not judge.
+
 ## [v0.4.0-candidate] - 2026-06-20
 
 ### Added
