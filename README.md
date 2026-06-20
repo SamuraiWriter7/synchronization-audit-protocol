@@ -494,3 +494,60 @@ They are not automatic proof.
 v0.3 Principle
 A fingerprint is a map of resemblance.
 It is not a verdict.
+
+## v0.4 Defense Court Protocol Integration
+
+v0.4 adds Defense Court Protocol Integration.
+
+This layer does not create verdicts.
+
+It prepares synchronization audit records and structure fingerprints for human review.
+
+### Added Documents
+
+```text
+docs/
+└── defense-court-integration.md
+Added Schema
+schemas/
+└── defense-court-bridge.schema.json
+Added Example
+examples/
+└── defense-court-bridge.example.yaml
+Defense Court Bridge
+
+A Defense Court Bridge record connects:
+
+synchronization audit records
+structure fingerprints
+case studies
+trace references
+evidence status
+classification stability
+human review boundaries
+
+It is designed for cases where similarity may create public accusation risk, attribution dispute, AI reconstruction concern, or high-impact interpretation.
+
+Human Review Boundary
+
+v0.4 makes the review boundary explicit.
+
+AI may assist with:
+
+summarization
+structural comparison
+missing evidence lists
+non-verdict packet preparation
+
+AI must not:
+
+declare theft
+assign legal responsibility
+convert similarity into proof
+bypass human review
+treat structure fingerprints as verdicts
+v0.4 Principle
+Audit is not accusation.
+Fingerprint is not proof.
+Bridge is not verdict.
+Human review is the gate.
