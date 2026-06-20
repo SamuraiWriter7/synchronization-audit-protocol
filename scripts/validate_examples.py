@@ -25,6 +25,11 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "defense-court-bridge.schema.json",
         "pattern": "defense-court-bridge*.yaml",
     },
+    {
+        "name": "AI Agent Hook",
+        "schema": ROOT / "schemas" / "ai-agent-hook.schema.json",
+        "pattern": "ai-agent-hook*.yaml",
+    },
 ]
 
 
