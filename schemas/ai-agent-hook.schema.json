@@ -1,0 +1,402 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/synchronization-audit-protocol/schemas/ai-agent-hook.schema.json",
+  "title": "AI Agent Hook",
+  "description": "A non-verdict AI agent hook for detecting possible synchronization signals and preparing audit records without making final judgments.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "created_at",
+    "agent",
+    "hook_scope",
+    "input_context",
+    "detection_signal",
+    "candidate_similarity",
+    "suggested_next_steps",
+    "safety_constraints",
+    "human_review_boundary",
+    "output_policy",
+    "traceability"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "agent_type", "role"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "agent_type": {
+          "type": "string",
+          "enum": [
+            "llm_assistant",
+            "retrieval_agent",
+            "validation_agent",
+            "monitoring_agent",
+            "human_assisted_agent",
+            "other"
+          ]
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "hook_scope": {
+      "type": "string",
+      "enum": [
+        "similarity_signal_detection",
+        "structure_fingerprint_candidate",
+        "trace_gap_detection",
+        "ai_reconstruction_risk_detection",
+        "case_study_candidate_detection",
+        "defense_bridge_candidate_detection",
+        "monitoring_only"
+      ]
+    },
+    "input_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input_refs", "observed_material_type", "processing_note"],
+      "properties": {
+        "input_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        },
+        "observed_material_type": {
+          "type": "string",
+          "enum": [
+            "idea",
+            "document",
+            "repository",
+            "protocol",
+            "system",
+            "public_event",
+            "ai_output",
+            "case_study",
+            "mixed",
+            "other"
+          ]
+        },
+        "processing_note": {
+          "type": "string"
+        }
+      }
+    },
+    "detection_signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signal_type",
+        "signal_strength",
+        "summary",
+        "detected_features"
+      ],
+      "properties": {
+        "signal_type": {
+          "type": "string",
+          "enum": [
+            "vocabulary_overlap",
+            "structural_sequence_overlap",
+            "metaphor_overlap",
+            "dependency_pattern_overlap",
+            "transformation_pattern_overlap",
+            "trace_gap",
+            "ai_context_dependency",
+            "mixed"
+          ]
+        },
+        "signal_strength": {
+          "type": "string",
+          "enum": [
+            "weak",
+            "moderate",
+            "strong",
+            "unknown"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "detected_features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/detected_feature"
+          }
+        }
+      }
+    },
+    "candidate_similarity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_classification",
+        "confidence",
+        "rationale",
+        "not_a_verdict"
+      ],
+      "properties": {
+        "candidate_classification": {
+          "type": "string",
+          "enum": [
+            "A_accidental_sync",
+            "B_structural_convergence",
+            "C_indirect_influence",
+            "D_direct_reference_or_imitation",
+            "E_ai_reconstruction",
+            "undetermined"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "not_a_verdict": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "suggested_next_steps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommended_actions",
+        "records_to_prepare",
+        "required_missing_evidence"
+      ],
+      "properties": {
+        "recommended_actions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "create_sync_audit_record_candidate",
+              "create_structure_fingerprint_candidate",
+              "create_case_study_candidate",
+              "create_defense_court_bridge_candidate",
+              "request_human_review",
+              "collect_more_evidence",
+              "monitor_only",
+              "defer_no_action"
+            ]
+          }
+        },
+        "records_to_prepare": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        },
+        "required_missing_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "safety_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_may",
+        "agent_must_not"
+      ],
+      "properties": {
+        "agent_may": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "agent_must_not": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "human_review_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "trigger_conditions",
+        "review_note"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "trigger_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "candidate_D_classification",
+              "high_structural_overlap",
+              "high_unique_metaphor_overlap",
+              "public_accusation_risk",
+              "ai_reconstruction_risk",
+              "insufficient_trace_evidence",
+              "legal_or_policy_relevance",
+              "human_review_requested"
+            ]
+          }
+        },
+        "review_note": {
+          "type": "string"
+        }
+      }
+    },
+    "output_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_outputs",
+        "forbidden_outputs"
+      ],
+      "properties": {
+        "allowed_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "similarity_signal_report",
+              "candidate_sync_audit_record",
+              "candidate_structure_fingerprint",
+              "candidate_case_study",
+              "candidate_defense_bridge",
+              "missing_evidence_list",
+              "non_verdict_summary"
+            ]
+          }
+        },
+        "forbidden_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "traceability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "related_records",
+        "change_note"
+      ],
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "related_records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        },
+        "change_note": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "source_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "ref", "description"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "sync_audit_record",
+            "structure_fingerprint",
+            "case_study",
+            "defense_court_bridge",
+            "trace_receipt",
+            "source_contribution_graph",
+            "repository_commit",
+            "article",
+            "external_source",
+            "ai_output",
+            "human_review_note",
+            "other"
+          ]
+        },
+        "ref": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "detected_feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feature_type",
+        "rating",
+        "description"
+      ],
+      "properties": {
+        "feature_type": {
+          "type": "string",
+          "enum": [
+            "vocabulary",
+            "structural_sequence",
+            "metaphor",
+            "dependency_pattern",
+            "transformation_pattern",
+            "trace_gap",
+            "ai_context_dependency",
+            "other"
+          ]
+        },
+        "rating": {
+          "type": "string",
+          "enum": [
+            "weak",
+            "moderate",
+            "strong",
+            "unknown"
+          ]
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
