@@ -551,3 +551,66 @@ Audit is not accusation.
 Fingerprint is not proof.
 Bridge is not verdict.
 Human review is the gate.
+
+## v0.5 AI Agent Hook / Automatic Synchronization Detection
+
+v0.5 adds the AI Agent Hook.
+
+This layer allows AI agents to detect possible synchronization signals and prepare candidate records.
+
+It does not allow AI agents to produce final verdicts.
+
+### Added Documents
+
+```text
+docs/
+└── ai-agent-hook.md
+Added Schema
+schemas/
+└── ai-agent-hook.schema.json
+Added Example
+examples/
+└── ai-agent-hook.example.yaml
+AI Agent Hook
+
+The AI Agent Hook can detect:
+
+vocabulary overlap
+structural sequence overlap
+metaphor overlap
+dependency pattern overlap
+transformation pattern overlap
+trace gaps
+AI context dependency
+AI reconstruction risk
+Agent Boundary
+
+AI may:
+
+detect possible similarity signals
+prepare candidate records
+list missing evidence
+recommend human review
+produce non-verdict summaries
+
+AI must not:
+
+declare theft
+assign legal responsibility
+treat similarity as proof
+treat candidate classification as final
+bypass human review
+publish accusation-level claims automatically
+v0.5 Principle
+AI detects.
+AI prepares.
+AI does not judge.
+First Complete Arc
+
+v0.5 completes the first protocol arc:
+
+v0.1 = Audit Ruler
+v0.2 = Case Study Layer
+v0.3 = Structure Fingerprint / Trace Layer
+v0.4 = Defense Court Protocol Integration
+v0.5 = AI Agent Hook / Automatic Synchronization Detection
