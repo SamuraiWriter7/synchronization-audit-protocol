@@ -20,6 +20,11 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "structure-fingerprint.schema.json",
         "pattern": "structure-fingerprint*.yaml",
     },
+    {
+        "name": "Defense Court Bridge",
+        "schema": ROOT / "schemas" / "defense-court-bridge.schema.json",
+        "pattern": "defense-court-bridge*.yaml",
+    },
 ]
 
 
