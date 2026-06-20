@@ -1,0 +1,139 @@
+id: ai_search_trace_origin_opacity_defense_bridge
+title: AI Search Trace Origin Opacity Defense Court Bridge
+created_at: "2026-06-20T08:00:00+09:00"
+
+bridge_scope: ai_reconstruction_review
+
+source_records:
+  sync_audit_records:
+    - type: sync_audit_record
+      ref: examples/sync-audit-record.ai-search-trace-origin-opacity.example.yaml
+      description: >
+        Synchronization audit record classifying the case as E / ai_reconstruction.
+
+  structure_fingerprints:
+    - type: structure_fingerprint
+      ref: examples/structure-fingerprint.example.yaml
+      description: >
+        Structure fingerprint used to compare trace-like source-to-output patterns.
+
+  case_studies:
+    - type: case_study
+      ref: docs/case-studies/ai-search-trace-origin-opacity.md
+      description: >
+        Human-readable case study describing AI-side origin opacity risk.
+
+  trace_refs: []
+
+escalation_reason:
+  triggers:
+    - possible_ai_reconstruction
+    - high_structural_overlap
+    - insufficient_trace_evidence
+    - human_review_requested
+  summary: >
+    The case involves a structurally similar AI-mediated output with weakened origin
+    visibility. The current classification is E / ai_reconstruction, but the evidence
+    is not sufficient for a direct reference or imitation claim.
+
+case_packet:
+  claim_under_review: >
+    Whether the observed similarity should remain classified as AI-side reconstruction
+    or whether additional trace evidence supports a different classification.
+  known_facts:
+    - A sync audit record exists for the AI search trace origin opacity case.
+    - The current classification is E / ai_reconstruction.
+    - Structural order overlap is considered strong.
+    - Direct reference or imitation is not proven.
+    - Prompt history, retrieval logs, or model context evidence are not currently available.
+  open_questions:
+    - Did the AI system have access to the source origin through prompt context, retrieval, memory, or public training exposure?
+    - Is there any documented citation, backlink, or reference path?
+    - Are distinctive metaphors reproduced in a way that exceeds normal convergence?
+    - Should the classification remain E or be revised after additional evidence?
+  excluded_claims:
+    - This bridge record does not claim theft.
+    - This bridge record does not claim direct imitation.
+    - This bridge record does not assign legal responsibility.
+    - This bridge record does not prove that any specific actor used the source.
+
+classification_state:
+  current_classification: E_ai_reconstruction
+  classification_stability: provisional
+  reason: >
+    AI-side reconstruction is plausible, but additional trace evidence is required
+    before assigning a stronger or different classification.
+
+evidence_status:
+  strongest_evidence:
+    - Strong structural order overlap between source-to-AI-to-output-to-origin-opacity patterns.
+    - Plausible AI context dependency.
+    - High origin-opacity relevance.
+  weakest_evidence:
+    - No confirmed reference path.
+    - No prompt history or retrieval log.
+    - No confirmed citation or direct access evidence.
+  missing_evidence:
+    - Prompt history.
+    - Retrieval logs.
+    - Model context record.
+    - Citation or backlink evidence.
+    - Human review notes.
+  evidence_risk: medium
+
+human_review_boundary:
+  requires_human_review: true
+  reviewer_role: >
+    Human reviewer familiar with synchronization audit records, trace evidence,
+    AI reconstruction risk, and attribution boundaries.
+  ai_may_assist:
+    - Summarize existing audit records.
+    - Compare structural sequences.
+    - List missing evidence.
+    - Prepare non-verdict review packets.
+  ai_must_not:
+    - Declare theft.
+    - Assign legal responsibility.
+    - Convert similarity into proof.
+    - Escalate to accusation without human review.
+    - Treat structure fingerprint evidence as a verdict.
+
+decision_constraints:
+  allowed_outputs:
+    - maintain_current_classification
+    - downgrade_classification
+    - request_more_evidence
+    - publish_non_verdict_summary
+    - defer_until_trace_evidence_exists
+  forbidden_outputs:
+    - Directly accuse an actor without reference-path evidence.
+    - Treat AI reconstruction as intentional imitation.
+    - Treat public accessibility as proof of use.
+    - Treat structural fingerprint overlap as legal evidence by itself.
+
+recommended_review_action: human_review_required
+
+non_verdict_statement: >
+  This Defense Court Bridge record is not a verdict. It does not prove influence,
+  imitation, theft, legal responsibility, or intentional use. It prepares a structured
+  human review packet for evaluating whether the current synchronization audit
+  classification should remain unchanged or be revised.
+
+traceability:
+  audit_trail:
+    - type: sync_audit_record
+      ref: examples/sync-audit-record.ai-search-trace-origin-opacity.example.yaml
+      description: >
+        Source audit record for the case.
+    - type: case_study
+      ref: docs/case-studies/ai-search-trace-origin-opacity.md
+      description: >
+        Human-readable case study.
+    - type: structure_fingerprint
+      ref: examples/structure-fingerprint.example.yaml
+      description: >
+        Related structure fingerprint.
+  version: v0.4.0-candidate
+  change_note: >
+    Added Defense Court Protocol bridge for human review preparation without
+    automatic verdict or accusation.
