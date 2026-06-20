@@ -435,3 +435,62 @@ AI-side reconstruction
 No case study should begin with an accusation.
 
 Every case study should begin with an observed similarity and then classify it conservatively.
+
+## v0.3 Structure Fingerprint / Trace Layer
+
+v0.3 adds the Structure Fingerprint and Trace Layer Integration.
+
+v0.1 placed the audit ruler.
+
+v0.2 applied the ruler to case studies.
+
+v0.3 adds a comparison layer for recording structural features without treating them as proof.
+
+### Added Documents
+
+```text
+docs/
+├── structure-fingerprint.md
+└── trace-layer-integration.md
+Added Schema
+schemas/
+└── structure-fingerprint.schema.json
+Added Example
+examples/
+└── structure-fingerprint.example.yaml
+Structure Fingerprint
+
+A Structure Fingerprint records comparison features such as:
+
+vocabulary signature
+structural sequence
+metaphor signature
+dependency pattern
+transformation pattern
+trace layer references
+
+A Structure Fingerprint is not a verdict.
+
+It does not prove copying, influence, imitation, or causality.
+
+It is a comparison aid that supports Synchronization Audit Records.
+
+Trace Layer Integration
+
+Trace Layer Integration connects audit records and fingerprints to evidence anchors such as:
+
+case studies
+trace receipts
+source contribution graphs
+repository commits
+public articles
+AI outputs
+external sources
+
+Trace references are pointers.
+
+They are not automatic proof.
+
+v0.3 Principle
+A fingerprint is a map of resemblance.
+It is not a verdict.
