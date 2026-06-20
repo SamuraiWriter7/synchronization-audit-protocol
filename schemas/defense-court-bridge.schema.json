@@ -258,18 +258,19 @@
         "allowed_outputs": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "maintain_current_classification",
-              "downgrade_classification",
-              "upgrade_classification",
-              "request_more_evidence",
-              "publish_non_verdict_summary",
-              "escalate_to_formal_review",
-              "close_without_action"
-            ]
-          }
-        },
+          "type": "string",
+          "enum": [
+            "maintain_current_classification",
+            "downgrade_classification",
+            "upgrade_classification",
+            "request_more_evidence",
+            "publish_non_verdict_summary",
+            "escalate_to_formal_review",
+            "defer_until_trace_evidence_exists",
+            "close_without_action"
+          ]
+        }
+      },
         "forbidden_outputs": {
           "type": "array",
           "items": {
