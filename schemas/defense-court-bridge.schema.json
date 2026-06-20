@@ -1,0 +1,351 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/synchronization-audit-protocol/schemas/defense-court-bridge.schema.json",
+  "title": "Defense Court Bridge",
+  "description": "A non-verdict bridge record for escalating synchronization audit records and structure fingerprints into human review or formal Defense Court Protocol review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "created_at",
+    "bridge_scope",
+    "source_records",
+    "escalation_reason",
+    "case_packet",
+    "classification_state",
+    "evidence_status",
+    "human_review_boundary",
+    "decision_constraints",
+    "recommended_review_action",
+    "non_verdict_statement",
+    "traceability"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bridge_scope": {
+      "type": "string",
+      "enum": [
+        "human_review_preparation",
+        "formal_review_preparation",
+        "attribution_dispute_preparation",
+        "ai_reconstruction_review",
+        "high_impact_similarity_review",
+        "other"
+      ]
+    },
+    "source_records": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sync_audit_records",
+        "structure_fingerprints",
+        "case_studies",
+        "trace_refs"
+      ],
+      "properties": {
+        "sync_audit_records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        },
+        "structure_fingerprints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        },
+        "case_studies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        },
+        "trace_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        }
+      }
+    },
+    "escalation_reason": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "summary"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "possible_direct_reference",
+              "possible_ai_reconstruction",
+              "high_structural_overlap",
+              "high_unique_metaphor_overlap",
+              "public_accusation_risk",
+              "attribution_or_origin_dispute",
+              "insufficient_trace_evidence",
+              "high_impact_domain",
+              "legal_or_policy_relevance",
+              "human_review_requested"
+            ]
+          }
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "case_packet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_under_review",
+        "known_facts",
+        "open_questions",
+        "excluded_claims"
+      ],
+      "properties": {
+        "claim_under_review": {
+          "type": "string"
+        },
+        "known_facts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "open_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded_claims": {
+          "type": "array",
+          "description": "Claims explicitly not made by this bridge record.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "classification_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_classification",
+        "classification_stability",
+        "reason"
+      ],
+      "properties": {
+        "current_classification": {
+          "type": "string",
+          "enum": [
+            "A_accidental_sync",
+            "B_structural_convergence",
+            "C_indirect_influence",
+            "D_direct_reference_or_imitation",
+            "E_ai_reconstruction",
+            "mixed",
+            "undetermined"
+          ]
+        },
+        "classification_stability": {
+          "type": "string",
+          "enum": [
+            "stable",
+            "provisional",
+            "contested",
+            "requires_more_evidence"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strongest_evidence",
+        "weakest_evidence",
+        "missing_evidence",
+        "evidence_risk"
+      ],
+      "properties": {
+        "strongest_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "weakest_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "missing_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_risk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "human_review_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requires_human_review",
+        "reviewer_role",
+        "ai_may_assist",
+        "ai_must_not"
+      ],
+      "properties": {
+        "requires_human_review": {
+          "type": "boolean"
+        },
+        "reviewer_role": {
+          "type": "string"
+        },
+        "ai_may_assist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ai_must_not": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "decision_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_outputs",
+        "forbidden_outputs"
+      ],
+      "properties": {
+        "allowed_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "maintain_current_classification",
+              "downgrade_classification",
+              "upgrade_classification",
+              "request_more_evidence",
+              "publish_non_verdict_summary",
+              "escalate_to_formal_review",
+              "close_without_action"
+            ]
+          }
+        },
+        "forbidden_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recommended_review_action": {
+      "type": "string",
+      "enum": [
+        "no_action",
+        "human_review_required",
+        "collect_more_evidence",
+        "publish_non_verdict_summary",
+        "prepare_formal_review",
+        "defer_until_trace_evidence_exists"
+      ]
+    },
+    "non_verdict_statement": {
+      "type": "string",
+      "description": "Required statement clarifying that this bridge record is not a legal, ethical, or factual verdict."
+    },
+    "traceability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "audit_trail",
+        "version",
+        "change_note"
+      ],
+      "properties": {
+        "audit_trail": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        },
+        "version": {
+          "type": "string"
+        },
+        "change_note": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "source_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "ref", "description"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "sync_audit_record",
+            "structure_fingerprint",
+            "case_study",
+            "trace_receipt",
+            "source_contribution_graph",
+            "repository_commit",
+            "article",
+            "external_source",
+            "ai_output",
+            "human_review_note",
+            "other"
+          ]
+        },
+        "ref": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
