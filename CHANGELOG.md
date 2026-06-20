@@ -1,5 +1,41 @@
 # Changelog
 
+## [v0.3.0-candidate] - 2026-06-20
+
+### Added
+
+- Added Structure Fingerprint layer.
+- Added `schemas/structure-fingerprint.schema.json`.
+- Added `examples/structure-fingerprint.example.yaml`.
+- Added `docs/structure-fingerprint.md`.
+- Added `docs/trace-layer-integration.md`.
+- Updated `scripts/validate_examples.py` to validate multiple schema/example groups.
+
+### Structure Fingerprint Components
+
+The new Structure Fingerprint schema supports:
+
+- `vocabulary_signature`
+- `structural_sequence`
+- `metaphor_signature`
+- `dependency_pattern`
+- `transformation_pattern`
+- `trace_layer_refs`
+
+### Notes
+
+v0.3 does not introduce automatic verdicts.
+
+A Structure Fingerprint is not proof of influence, imitation, copying, or causality.
+
+It is a comparison aid that helps Synchronization Audit Records evaluate structural similarity more carefully.
+
+### Principle
+
+A fingerprint is a map of resemblance.
+
+It is not a verdict.
+
 ## [v0.2.0-candidate] - 2026-06-20
 
 ### Added
