@@ -1,5 +1,46 @@
 # Changelog
 
+## [v0.4.0-candidate] - 2026-06-20
+
+### Added
+
+- Added Defense Court Protocol Integration.
+- Added `docs/defense-court-integration.md`.
+- Added `schemas/defense-court-bridge.schema.json`.
+- Added `examples/defense-court-bridge.example.yaml`.
+- Updated `scripts/validate_examples.py` to validate Defense Court Bridge examples.
+
+### Defense Court Bridge
+
+The Defense Court Bridge provides a non-verdict handoff layer between:
+
+- Synchronization Audit Records
+- Structure Fingerprints
+- Case Studies
+- Trace Layer references
+- Human review
+- Formal Defense Court Protocol review
+
+### Human Review Boundary
+
+v0.4 makes explicit that AI may assist with summarization, comparison, and packet preparation, but must not:
+
+- declare theft
+- assign legal responsibility
+- convert similarity into proof
+- treat fingerprints as verdicts
+- bypass human review
+
+### Principle
+
+Audit is not accusation.
+
+Fingerprint is not proof.
+
+Bridge is not verdict.
+
+Human review is the gate.
+
 ## [v0.3.0-candidate] - 2026-06-20
 
 ### Added
